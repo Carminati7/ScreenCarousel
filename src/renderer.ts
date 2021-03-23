@@ -1,8 +1,10 @@
-function loopBody() {
+function loopBody(): void {
   console.log('hello')
+  console.log('logica per l\'animazione delle imagini')
+  console.log('comunicazione con il main')
 }
 
-function rendererLoop() {
+function rendererLoop(): void {
   loopBody()
   setTimeout( rendererLoop , 1000)
 }
