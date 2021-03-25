@@ -1,5 +1,10 @@
+import * as Processor from "./lib/image/index"
+
 const { app, BrowserWindow } = require('electron')
 const path = require('path')
+// const Img
+
+var processor: Processor.ImgProcessor
 
 function createWindow () {
   console.log('dirname: ', __dirname)
@@ -16,6 +21,11 @@ function createWindow () {
 }
 
 app.whenReady().then(() => {
+
+  processor = new Processor.TestProcessor()
+  let imageHandler = processor.createProcessor()
+  console.log( imageHandler.getNext() )
+  
   createWindow()
 
   app.on('activate', () => {
