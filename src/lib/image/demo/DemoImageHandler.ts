@@ -11,12 +11,13 @@ export class DemoImageHandler implements IImageProcessor {
     this.imgGetter = imgGetter
     this.imgArray = []
     this.index = 0
+    this.imgArray = this.imgGetter.getAllImage()
   }
 
   getNext() {
-    this.imgArray = this.imgGetter.getAllImage()
+    let result = this.imgArray[ this.index ].srcString
     console.log( this.imgArray)
-    let result = this.imgArray[ this.index++ ].imgSrcString
+    this.index = (this.index + 1) % this.imgArray.length
     return result
   }
 }

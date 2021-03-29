@@ -1,10 +1,14 @@
 import * as Processor from "./lib/image/index"
 
 const { app, BrowserWindow } = require('electron')
+const { ipcMain } = require('electron')
 const path = require('path')
 // const Img
 
 var processor: Processor.ImgProcessorFactory
+var imageHandler: Processor.IImageProcessor
+
+const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
 
 function createWindow () {
   console.log('dirname: ', __dirname)
@@ -18,13 +22,21 @@ function createWindow () {
   })
   let x: number
   win.loadFile(__dirname + '/index.html')
+  ipcMain.on('request', async (event, arg) => {
+    console.log(arg) // prints "ping"
+    await sleep(10000)
+    let src = imageHandler.getNext()
+    win.webContents.send("response", {
+      success: src
+    });
+  })
 }
+
 
 app.whenReady().then(() => {
 
   processor = new Processor.TestProcessor( )
-  let imageHandler = processor.createProcessor( __dirname )
-  console.log( imageHandler.getNext() )
+  imageHandler = processor.createProcessor( __dirname )
 
   createWindow()
 

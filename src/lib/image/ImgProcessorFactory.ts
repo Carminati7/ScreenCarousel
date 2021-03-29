@@ -15,5 +15,6 @@ class TestProcessor extends ImgProcessorFactory{
 
 export {
   ImgProcessorFactory,
-  TestProcessor
+  TestProcessor,
+  IImageProcessor
 }
