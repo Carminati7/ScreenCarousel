@@ -1,1 +1,1 @@
-export * from './ImgProcessor'
+export * from './ImgProcessorFactory'

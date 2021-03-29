@@ -4,7 +4,7 @@ const { app, BrowserWindow } = require('electron')
 const path = require('path')
 // const Img
 
-var processor: Processor.ImgProcessor
+var processor: Processor.ImgProcessorFactory
 
 function createWindow () {
   console.log('dirname: ', __dirname)
@@ -22,10 +22,10 @@ function createWindow () {
 
 app.whenReady().then(() => {
 
-  processor = new Processor.TestProcessor()
-  let imageHandler = processor.createProcessor()
+  processor = new Processor.TestProcessor( )
+  let imageHandler = processor.createProcessor( __dirname )
   console.log( imageHandler.getNext() )
-  
+
   createWindow()
 
   app.on('activate', () => {
