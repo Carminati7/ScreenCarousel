@@ -14,35 +14,6 @@ export class GitHubGetter implements ImageGetter {
     setInterval( this.readDir, REFRESH_RATE )
   }
 
-// data example
-// data: [
-//     {
-//       name: 'donotremove.jpeg',
-//       path: 'pc1/donotremove.jpeg',
-//       sha: '919b4e9a45ae1211b28006182cea606a57b1fc21',
-//       size: 2735,
-//       url: 'https://api.github.com/repos/Carminati7/ImageCarouselHost/contents/pc1/donotremove.jpeg?ref=main',
-//       html_url: 'https://github.com/Carminati7/ImageCarouselHost/blob/main/pc1/donotremove.jpeg',
-//       git_url: 'https://api.github.com/repos/Carminati7/ImageCarouselHost/git/blobs/919b4e9a45ae1211b28006182cea606a57b1fc21',
-//       download_url: 'https://raw.githubusercontent.com/Carminati7/ImageCarouselHost/main/pc1/donotremove.jpeg',
-//       type: 'file',
-//       _links: [Object]
-//     },
-//     {
-//       name: 'testimg.jpeg',
-//       path: 'pc1/testimg.jpeg',
-//       sha: 'a211481aaa87313637448b02c91b3b87f0b47d48',
-//       size: 56119,
-//       url: 'https://api.github.com/repos/Carminati7/ImageCarouselHost/contents/pc1/testimg.jpeg?ref=main',
-//       html_url: 'https://github.com/Carminati7/ImageCarouselHost/blob/main/pc1/testimg.jpeg',
-//       git_url: 'https://api.github.com/repos/Carminati7/ImageCarouselHost/git/blobs/a211481aaa87313637448b02c91b3b87f0b47d48',
-//       download_url: 'https://raw.githubusercontent.com/Carminati7/ImageCarouselHost/main/pc1/testimg.jpeg',
-//       type: 'file',
-//       _links: [Object]
-//     }
-//   ]
-// }
-
   readDir() {
     axios.get( this.path )
       .then( (response) => {
