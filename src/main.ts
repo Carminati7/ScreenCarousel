@@ -35,7 +35,7 @@ function createWindow () {
 
 app.whenReady().then(() => {
 
-  processor = new Processor.TestProcessor( )
+  processor = new Processor.TestGitProcessor( )
   imageHandler = processor.createProcessor( __dirname )
 
   createWindow()
